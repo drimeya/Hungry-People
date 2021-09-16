@@ -1,0 +1,11 @@
+@mixin hover_text {
+    &:hover {
+        color: $main;
+    }
+}
+@mixin hover_btn {
+    &:hover {
+        border: none;
+        background-color: $main;
+    }
+}

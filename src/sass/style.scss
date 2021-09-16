@@ -1,6 +1,22 @@
+@import 'base/bootstrap-reboot.min';
+
 * {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: #FFF;
+}
+.container {
+    width: 1280px;
+    margin: 0 auto;
 }
 
-@import 'base/font-icons';
+@import 'base/fonts';
 @import 'base/variables';
+@import 'base/mixins';
+@import 'blocks/promo';
+@import 'blocks/header';
+@import 'blocks/subtitle';
+@import 'blocks/title';
+@import 'blocks/button';
+@import 'blocks/social';
+@import 'blocks/down';

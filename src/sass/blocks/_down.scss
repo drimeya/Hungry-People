@@ -1,0 +1,17 @@
+.down {
+    display: block;
+    margin: auto;
+    width: 62px;
+    height: 62px;
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+        svg circle {
+            fill: $main;
+        }
+        svg ellipse {
+            fill: $main;
+        }
+    }
+}
