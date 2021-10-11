@@ -3,7 +3,6 @@
 * {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    color: #FFF;
 }
 .container {
     width: 1280px;
@@ -14,9 +13,13 @@
 @import 'base/variables';
 @import 'base/mixins';
 @import 'blocks/promo';
+@import 'blocks/divider';
 @import 'blocks/header';
 @import 'blocks/subtitle';
 @import 'blocks/title';
 @import 'blocks/button';
 @import 'blocks/social';
 @import 'blocks/down';
+@import 'blocks/about-us';
+@import 'blocks/text';
+@import 'blocks/yellow-square';
