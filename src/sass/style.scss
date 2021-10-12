@@ -1,5 +1,7 @@
-@import 'base/bootstrap-reboot.min';
-
+@import 'libs/bootstrap-reboot.min';
+@import 'base/fonts';
+@import 'base/variables';
+@import 'base/mixins';
 * {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
@@ -7,19 +9,282 @@
 .container {
     width: 1280px;
     margin: 0 auto;
+    &_flex {
+        display: flex;
+    }
 }
-
-@import 'base/fonts';
-@import 'base/variables';
-@import 'base/mixins';
-@import 'blocks/promo';
-@import 'blocks/divider';
-@import 'blocks/header';
-@import 'blocks/subtitle';
-@import 'blocks/title';
-@import 'blocks/button';
-@import 'blocks/social';
-@import 'blocks/down';
-@import 'blocks/about-us';
-@import 'blocks/text';
-@import 'blocks/yellow-square';
+.promo {
+    position: relative;
+    height: 100vh;
+    background: url(../img/bg/promo_bg.jpg) center center/cover no-repeat;
+    padding: 326px 0 80px 0;
+    .button__wrapper {
+        margin-top: 30px;
+    }
+    &__side {
+        position: absolute;
+        transform: rotate(-90deg);
+        top: 50%;
+        left: 0px;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+    }
+}
+.divider {
+    width: 60px;
+    height: 5px;
+    border-radius: 2.5px;
+    background: $main;
+    margin: 0 auto;
+}
+.header {
+    position: absolute;
+    top: 0;
+    .nav {
+        padding: 32px 0;
+        ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin-bottom: 0;
+        }
+        &__item {
+            list-style: none;
+            a {
+                display: block;
+                width: 133px;
+                color: #FFF;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 18px;
+                text-transform: uppercase;
+                text-align: center;
+                transition: 0.3s all;
+                @include hover_text;
+            }
+            div {
+                width: 220px;
+            }
+        }
+    }
+    &__wheel {
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: 0.5s all;
+        &:hover {
+            transform:translateX(-50%) rotate(-180deg);
+        }
+    }
+}
+.subtitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #fff;
+    &_top {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.title {
+    font-family: Banny;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 48px;
+    text-transform: uppercase;
+    font-weight: bold;
+    &_promo {
+        font-size: 96px;
+        line-height: 126px;
+    }
+}
+.title {
+    font-family: Banny;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 48px;
+    text-transform: uppercase;
+    font-weight: bold;
+    &_promo {
+        font-size: 96px;
+        line-height: 126px;
+    }
+}
+.button {
+    text-align: center;
+    width: 200px;
+    height: 60px;
+    border-radius: 3px;
+    background: none;
+    border: 1px solid #FFF;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin: 0 20px;
+    transition: 0.3s all;
+    @include hover_btn;
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        width: 500px;
+        margin: 0 auto;
+    }
+    &_form {
+        grid-column: 1 / 3;
+        margin: 0;
+        background-color: $main;
+        border: none;   
+        width: 100%;
+    }
+}
+.social {
+    position: absolute;
+    top: 50%;
+    right: 120px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    &__item {
+        margin-bottom: 20px;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            transition: 0.4s all;
+            span {
+                font-size: 25px;
+            }
+            &:hover {
+                background-color: $main;
+                border: none;
+                @include shadow;
+            }
+        }
+    }
+}
+.down {
+    display: block;
+    margin-top: 80px;
+    svg {
+        cursor: pointer;
+        display: block;
+        margin: auto;
+        width: 62px;
+        height: 62px;
+        border: 1px solid #FFF;
+        border-radius: 50%;
+        transition: 0.4s all;
+        &:hover {
+            background-color: $main;
+            border: none;
+            @include shadow;
+        }
+    }
+}
+.about-us {
+    padding: 100px 0;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin-right: 80px;
+    justify-content: center;
+    &_right {
+        margin-right: 0;
+        margin-left: 80px;
+    }
+}
+.white-text {
+    color: white;
+}
+.text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    span {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+    }
+    &_mt14 {
+        margin-top: 14px;
+    }
+}
+.yellow-square {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+    height: 250px;
+    width: 250px;
+    border: 20px solid $main;
+    border-radius: 5px;
+    &_left {
+        right: 100%;
+    }   
+}
+.image-wrapper {
+    position: relative;
+    &_left {
+        margin-left: 125px;
+    }
+}
+.our-team {
+    position: relative;
+    padding: 100px 0;
+    background: url(../img/bg/team_bg.jpg) center center / cover no-repeat;
+}
+.booking {
+    padding: 100px 0;
+    position: relative;
+}
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 20px;
+}
+.form-input {
+    height: 60px;
+    font-size: 14px;
+    line-height: 19px;
+    color: #404141;
+    border-radius: 5px;
+    background-color: #E5E5E5;
+    border: none;
+    padding: 0 20px;
+}
+.subtext {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    line-height: 12px;
+    color: #a8a8a8;
+    span {
+        font-weight: 700;
+    }
+}

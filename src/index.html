@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
-    <section class="promo">
+    <section class="promo white-text">
         <div class="container">
             <header class="header">
                 <nav class="nav">
@@ -82,17 +82,17 @@
         </div>
     </section>
     <section class="about-us">
-        <div class="container">
-            <div class="about-us__text-wrapper">
+        <div class="container container_flex">
+            <div class="text-wrapper">
                 <h2 class="title">about us</h2>
                 <div class="divider"></div>
-                <p class="text">
+                <p class="text text_mt14">
                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at velit maximus, molestie est a, tempor magna.</span>
                     <br><br>
                     Integer ullamcorper neque eu purus euismod, ac faucibus mauris posuere. Morbi non ultrices ligula. Sed dictum, enim sed ullamcorper feugiat, dui odio vehicula eros, a sollicitudin lorem quam nec sem. Mauris tincidunt feugiat diam convallis pharetra. Nulla facilisis semper laoreet.
                 </p>
             </div>
-            <div class="about-us__image-wrapper">
+            <div class="image-wrapper">
                 <div class="yellow-square"></div>
                 <picture>
                     <source>
@@ -100,6 +100,52 @@
                 </picture>
             </div>
         </div>
+    </section>
+    <section class="our-team">
+        <div class="subtitle subtitle_top">our team</div>
+        <div class="container container_flex">
+            <div class="image-wrapper image-wrapper_left">
+                <div class="yellow-square yellow-square_left"></div>
+                <picture>
+                    <source>
+                    <img src="img/team-img.jpg" alt="team-img">
+                </picture>
+            </div>
+            <div class="text-wrapper text-wrapper_right white-text">
+                <h2 class="title">MASTER CHEF</h2>
+                <div class="divider"></div>
+                <p class="text text_mt14">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at velit maximus, molestie est a, tempor magna.</span>
+                    <br><br>
+                    Integer ullamcorper neque eu purus euismod, ac faucibus mauris posuere. Morbi non ultrices ligula. Sed dictum, enim sed ullamcorper feugiat, dui odio vehicula eros, a sollicitudin lorem quam nec sem. Mauris tincidunt feugiat diam convallis pharetra. Nulla facilisis semper laoreet.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="booking">
+        <div class="container container_flex">
+            <div class="text-wrapper">
+                <h2 class="title">book a table</h2>
+                <div class="divider"></div>
+                <form class="form form_booking" action="">
+                    <input type="text" class="form-input" name="name" placeholder="Name">
+                    <input type="email" class="form-input" name="email" placeholder="Email">
+                    <input type="tel" class="form-input" name="phone" placeholder="Phone">
+                    <input type="number" class="form-input" name="people" placeholder="People">
+                    <input type="data" class="form-input" name='data' placeholder="Date (mm/dd)">
+                    <input type="text" class="form-input" name='time' placeholder="Time">
+                    <button class="button button_form">book now</button>
+                </form>
+            </div>
+            <div class="image-wrapper">
+                <div class="yellow-square"></div>
+                <picture>
+                    <source>
+                    <img src="img/booking-img.jpg" alt="booking-img">
+                </picture>
+            </div>
+        </div>
+        <div class="subtext">Mon - Fri: <span>8PM - 10PM</span>, Sat - Sun: <span>8PM - 3AM</span>, Phone: <span>+40 729 131 637/+40 726 458 782</span></div>
     </section>
 </body>
 </html>
