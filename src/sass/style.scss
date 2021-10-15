@@ -1,4 +1,5 @@
 @import 'libs/bootstrap-reboot.min';
+@import 'libs/simple-adaptive-slider.min.scss';
 @import 'base/fonts';
 @import 'base/variables';
 @import 'base/mixins';
@@ -286,5 +287,32 @@
     color: #a8a8a8;
     span {
         font-weight: 700;
+    }
+}
+.specialtes {
+    position: relative;
+    padding: 100px 0;
+    background: url(../img/bg/specialtes_bg.jpg) center center / cover no-repeat;
+    &__item {
+        display: flex;
+    }
+}
+.slider {
+    max-width: 100%;
+    overflow: visible;
+    &__wrapper {
+        background: none;
+    }
+    &__indicator {
+        background-clip: unset;
+        border: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        margin: 0 10px;
+    }
+    &__indicators {
+        top: calc(100% + 45px);
+        height: 10px;
     }
 }
