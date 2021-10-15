@@ -12,6 +12,9 @@
     margin: 0 auto;
     &_flex {
         display: flex;
+        &-space-between {
+            justify-content: space-between;
+        }
     }
 }
 .promo {
@@ -243,13 +246,16 @@
     width: 250px;
     border: 20px solid $main;
     border-radius: 5px;
+    z-index: 100;
     &_left {
         right: 100%;
     }   
 }
 .image-wrapper {
     position: relative;
+    margin-right: 125px;
     &_left {
+        margin-right: 0;
         margin-left: 125px;
     }
 }
@@ -382,5 +388,53 @@
             font-size: 18px;
             line-height: 18px;
         }
+    }
+}
+.private {
+    position: relative;
+    padding: 100px 0;
+    background: url(../img/bg/specialtes_bg.jpg) center center /cover no-repeat;
+    &__title {
+        font-family: Banny;
+        font-size: 24px;
+        text-transform: uppercase;
+    }
+    .pic {
+        &::before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 475px;
+            background: #000;
+            position: absolute;
+            right: 0;
+        }
+    }
+    .pic2 {
+        &::before {
+            left: 0;
+        }
+    }
+    &__title {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: rotate(90deg) translateY(-20px) translateX(70px);
+        &_right {
+            top: unset;
+            bottom: 0;
+            right: unset;
+            left: 0;
+            transform: rotate(-90deg) translateX(130px) translateY(-80px);
+        }
+    }
+}
+.gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    img {
     }
 }
