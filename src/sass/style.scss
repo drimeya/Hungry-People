@@ -1,11 +1,29 @@
 @import 'libs/bootstrap-reboot.min';
-@import 'libs/simple-adaptive-slider.min.scss';
 @import 'base/fonts';
 @import 'base/variables';
 @import 'base/mixins';
 * {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
+}
+body {
+    position: relative;
+}
+@keyframes slideIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes slideOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 .container {
     width: 1280px;
@@ -113,19 +131,6 @@
         line-height: 126px;
     }
 }
-.title {
-    font-family: Banny;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 36px;
-    line-height: 48px;
-    text-transform: uppercase;
-    font-weight: bold;
-    &_promo {
-        font-size: 96px;
-        line-height: 126px;
-    }
-}
 .button {
     text-align: center;
     width: 200px;
@@ -153,6 +158,24 @@
         background-color: $main;
         border: none;   
         width: 100%;
+    }
+    &_contact {
+        width: 150%;
+        grid-column: 3 / 4;
+        justify-self: end;
+    }
+    a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 55px;
+        text-transform: uppercase;
+        &:hover {
+            text-decoration: none;
+        }
     }
 }
 .social {
@@ -273,6 +296,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     padding: 20px;
+    &_contact {
+        padding: 0;
+        margin-top: 50px;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 .form-input {
     height: 60px;
@@ -283,6 +311,18 @@
     background-color: #E5E5E5;
     border: none;
     padding: 0 20px;
+}
+.form-textarea {
+    font-size: 14px;
+    line-height: 19px;
+    color: #404141;
+    border-radius: 5px;
+    background-color: #E5E5E5;
+    border: none;
+    padding: 20px;
+    resize: none;
+    height: 120px;
+    grid-column: 1 / 4;
 }
 .subtext {
     position: absolute;
@@ -302,25 +342,6 @@
     background: url(../img/bg/specialtes_bg.jpg) center center / cover no-repeat;
     &__item {
         display: flex;
-    }
-}
-.slider {
-    max-width: 100%;
-    overflow: visible;
-    &__wrapper {
-        background: none;
-    }
-    &__indicator {
-        background-clip: unset;
-        border: none;
-        width: 10px;
-        height: 10px;
-        border-radius: 5px;
-        margin: 0 10px;
-    }
-    &__indicators {
-        top: calc(100% + 45px);
-        height: 10px;
     }
 }
 .tabs {
@@ -363,6 +384,7 @@
         gap: 30px 0;
         &_active {
             display: grid;
+            animation: slideIn 0.9s;
         }
     }
     &__item {
@@ -430,11 +452,153 @@
     }
 }
 .gallery {
+    position: relative;
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
     width: 100%;
     height: auto;
-    img {
+    picture {
+        width: 360px;
+        height: 360px;
+        img {
+            object-fit: cover;
+        }
+    }
+    .overlay-img {
+        position: absolute;
+        height: 50px;
+        width: 360px;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        animation: slideIn 0.3s;
+        &:before {
+            content: 'Click to view';
+            display: block;
+            text-align: center;
+            color:  #fff;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            line-height: 45px;
+        }
     }
 }
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background:rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    animation: slideIn 0.3s;
+    &_slideOut {
+        animation: slideOut 0.3s;
+    }
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    animation: slideIn 0.3s;
+    &__content {
+        img {
+            height: 800px;
+            width: 1000px;
+            object-fit: cover;
+        }
+    }
+    &__close {
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        cursor: pointer;
+        svg {
+            height: 50px;
+            path {
+                transition: 0.3s all;
+            }
+        }
+        &:hover {
+            path {
+                fill: $main;
+            }
+        }
+    }
+    &_form {
+        top: 30%;
+        width: 500px;
+        background: #fff;
+        &::before {
+            content: 'Thank you! Our manager will contact you during the day';
+            display: block;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 28px;
+            padding: 50px;
+            text-align: center;
+        }
+    }
+}
+.active {
+    display: block;
+}
+.slider {
+    position: relative;
+    &__item {
+        display: none;
+        &_active {
+            display: block;
+            animation: slideIn 0.7s ease-in-out;
+        }
+    }
+    &__dot-wrapper {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+    }
+    &__dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5); 
+        margin: 0 10px;
+        &_active {
+            background-color: #fff;
+        }
+    }
+}
+.contact {
+    padding: 100px 0;
+    &__wrapper {
+        grid-column: 1 / 3;
+        display: flex;
+        padding-top: 20px;
+    }
+    &__item {
+        font-size: 12px;
+        line-height: 12px;
+        color: #a8a8a8;
+        font-weight: 700;
+        margin-right: 15px;
+        span {
+            color: $main;
+            margin-right: 4px;
+        }
+    }
+}
+.map {
+    height: 475px;
+    width: 100%;
+}
+.footer {
+    position: relative;
+    height: 100px;
+    background: rgb(26, 26, 26);
+}
+
+
