@@ -1,0 +1,12 @@
+.subtext {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    line-height: 12px;
+    color: #a8a8a8;
+    span {
+        font-weight: 700;
+    }
+}

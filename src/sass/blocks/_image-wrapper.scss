@@ -1,0 +1,8 @@
+.image-wrapper {
+    position: relative;
+    margin-right: 125px;
+    &_left {
+        margin-right: 0;
+        margin-left: 125px;
+    }
+}

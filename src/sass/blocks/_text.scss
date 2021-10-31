@@ -1,0 +1,26 @@
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin-right: 80px;
+    justify-content: center;
+    &_right {
+        margin-right: 0;
+        margin-left: 80px;
+    }
+}
+.text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 0;
+    span {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+    }
+    &_mt14 {
+        margin-top: 14px;
+    }
+}

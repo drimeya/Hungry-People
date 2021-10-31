@@ -1,0 +1,14 @@
+.yellow-square {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+    height: 250px;
+    width: 250px;
+    border: 20px solid $main;
+    border-radius: 5px;
+    z-index: 100;
+    &_left {
+        right: 100%;
+    }   
+}

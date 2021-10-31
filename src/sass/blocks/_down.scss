@@ -1,0 +1,19 @@
+.down {
+    display: block;
+    margin-top: 80px;
+    svg {
+        cursor: pointer;
+        display: block;
+        margin: auto;
+        width: 62px;
+        height: 62px;
+        border: 1px solid #FFF;
+        border-radius: 50%;
+        transition: 0.4s all;
+        &:hover {
+            background-color: $main;
+            border: none;
+            @include shadow;
+        }
+    }
+}

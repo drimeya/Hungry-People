@@ -1,0 +1,47 @@
+.button {
+    text-align: center;
+    width: 200px;
+    height: 60px;
+    border-radius: 3px;
+    background: none;
+    border: 1px solid #FFF;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin: 0 20px;
+    transition: 0.3s all;
+    @include hover_btn;
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        width: 500px;
+        margin: 0 auto;
+    }
+    &_form {
+        grid-column: 1 / 3;
+        margin: 0;
+        background-color: $main;
+        border: none;   
+        width: 100%;
+    }
+    &_contact {
+        width: 150%;
+        grid-column: 3 / 4;
+        justify-self: end;
+    }
+    a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 55px;
+        text-transform: uppercase;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

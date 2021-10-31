@@ -1,0 +1,32 @@
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 20px;
+    &_contact {
+        padding: 0;
+        margin-top: 50px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}.form-input {
+    height: 60px;
+    font-size: 14px;
+    line-height: 19px;
+    color: #404141;
+    border-radius: 5px;
+    background-color: #E5E5E5;
+    border: none;
+    padding: 0 20px;
+}
+.form-textarea {
+    font-size: 14px;
+    line-height: 19px;
+    color: #404141;
+    border-radius: 5px;
+    background-color: #E5E5E5;
+    border: none;
+    padding: 20px;
+    resize: none;
+    height: 120px;
+    grid-column: 1 / 4;
+}

@@ -1,0 +1,28 @@
+.slider {
+    position: relative;
+    &__item {
+        display: none;
+        &_active {
+            display: block;
+            animation: slideIn 0.7s ease-in-out;
+        }
+    }
+    &__dot-wrapper {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+    }
+    &__dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5); 
+        margin: 0 10px;
+        &_active {
+            background-color: #fff;
+        }
+    }
+}

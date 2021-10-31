@@ -1,0 +1,32 @@
+.gallery {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    picture {
+        width: 360px;
+        height: 360px;
+        img {
+            object-fit: cover;
+        }
+    }
+    .overlay-img {
+        position: absolute;
+        height: 50px;
+        width: 360px;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        animation: slideIn 0.3s;
+        &:before {
+            content: 'Click to view';
+            display: block;
+            text-align: center;
+            color:  #fff;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            line-height: 45px;
+        }
+    }
+}
