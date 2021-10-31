@@ -1,0 +1,28 @@
+@media (max-height: 1024px) {
+    .promo {
+        padding: 226px 0 80px 0;
+    }
+    .modal__content {
+        img {
+            height: 550px;
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .container {
+        width: 90vw;
+    }
+    .header {
+        &__item {
+            a {
+                width: 100px;
+            }
+            &_empty {
+                display: none;
+            }
+        }
+        &__wheel {
+            display: none;
+        }
+    }
+}

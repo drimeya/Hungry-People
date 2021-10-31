@@ -14,9 +14,7 @@ body {
 .white-text {
     color: white;
 }
-.active {
-    display: block;
-}
+
 @import 'blocks/container';
 @import 'blocks/promo';
 @import 'blocks/divider';
@@ -45,6 +43,10 @@ body {
 @import 'blocks/contact';
 @import 'blocks/map';
 @import 'blocks/footer';
+.active {
+    display: block;
+}
+@import 'base/media';
 
 
 
