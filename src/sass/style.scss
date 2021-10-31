@@ -11,9 +11,6 @@
 body {
     position: relative;
 }
-.white-text {
-    color: white;
-}
 
 @import 'blocks/container';
 @import 'blocks/promo';
@@ -43,9 +40,15 @@ body {
 @import 'blocks/contact';
 @import 'blocks/map';
 @import 'blocks/footer';
+@import 'blocks/hamburger';
+
 .active {
     display: block;
 }
+.white-text {
+    color: white;
+}
+
 @import 'base/media';
 
 

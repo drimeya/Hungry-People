@@ -6,6 +6,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename = require("gulp-rename");
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
+const webpHTML = require('gulp-webp-html');
+const webp = require('gulp-webp');
 
 gulp.task('server', function() {
 
@@ -68,4 +70,16 @@ gulp.task('images', function () {
         .pipe(browserSync.stream());
 });
 
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'scripts', 'fonts', 'icons', 'html', 'images'));
+gulp.task('webp', () =>
+    gulp.src('src/img/**/*')
+        .pipe(webp())
+        .pipe(gulp.dest('dist/img/'))
+);
+
+gulp.task('htmlWebp',function(){
+    return gulp.src('src/**/*.html')
+        .pipe(webpHTML())
+        .pipe(gulp.dest('src/'));
+});
+
+gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'scripts', 'fonts', 'icons', 'images', 'webp', 'html'));

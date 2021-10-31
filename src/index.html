@@ -52,13 +52,20 @@
             <div class="modal__content"></div>
         </div>
     </div>
-    
-    <section class="promo white-text">
+    <a class="down down_up" href='#home'><svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="31" cy="31" rx="20" ry="20" fill="white"/>
+        <path d="M30.3359 33.2891C30.6875 33.6406 31.2734 33.6406 31.625 33.2891L36.9375 27.9766C37.3281 27.5859 37.3281 27 36.9375 26.6484L36.0781 25.75C35.6875 25.3984 35.1016 25.3984 34.75 25.75L30.9609 29.5391L27.2109 25.75C26.8594 25.3984 26.2734 25.3984 25.8828 25.75L25.0234 26.6484C24.6328 27 24.6328 27.5859 25.0234 27.9766L30.3359 33.2891Z" fill="#333333"/>
+        </svg></a>
+    <section id='home' class="promo white-text">
         <div class="container">
             <header class="header">
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                </div>
                 <nav class="nav">
                     <ul>
-                        <li class="nav__item"><a href="#">Home</a></li>
+                        <li class="nav__item"><a href="#home">Home</a></li>
                         <li class="nav__item"><a href="#about-us">About</a></li>
                         <li class="nav__item"><a href="#our-team">Team</a></li>
                         <li class="nav__item"><a href="#booking">Booking</a></li>
@@ -83,6 +90,7 @@
                 <path d="M30.3359 33.2891C30.6875 33.6406 31.2734 33.6406 31.625 33.2891L36.9375 27.9766C37.3281 27.5859 37.3281 27 36.9375 26.6484L36.0781 25.75C35.6875 25.3984 35.1016 25.3984 34.75 25.75L30.9609 29.5391L27.2109 25.75C26.8594 25.3984 26.2734 25.3984 25.8828 25.75L25.0234 26.6484C24.6328 27 24.6328 27.5859 25.0234 27.9766L30.3359 33.2891Z" fill="#333333"/>
                 </svg></a>
             <div class="social">
+                <div class="social__arrow"></div>
                 <div class="social__item"><a href="#"><span class="icon-facebook"></span></a></div>
                 <div class="social__item"><a href="#"><span class="icon-twitter"></span></a></div>
                 <div class="social__item"><a href="#"><span class="icon-instagram"></span></a></div>
@@ -103,10 +111,7 @@
             </div>
             <div class="image-wrapper">
                 <div class="yellow-square"></div>
-                <picture>
-                    <source>
-                    <img src="img/about-img.jpg" alt="about-img">
-                </picture>
+                <picture><source srcset="img/about-img.webp" type="image/webp"><img src="img/about-img.jpg" alt="about-img"></picture>
             </div>
         </div>
     </section>
@@ -115,10 +120,7 @@
         <div class="container container_flex">
             <div class="image-wrapper image-wrapper_left">
                 <div class="yellow-square yellow-square_left"></div>
-                <picture>
-                    <source>
-                    <img src="img/team-img.jpg" alt="team-img">
-                </picture>
+                <picture><source srcset="img/team-img.webp" type="image/webp"><img src="img/team-img.jpg" alt="team-img"></picture>
             </div>
             <div class="text-wrapper text-wrapper_right white-text">
                 <h2 class="title">MASTER CHEF</h2>
@@ -147,11 +149,8 @@
                 </form>
             </div>
             <div class="image-wrapper">
-                <div class="yellow-square"></div>
-                <picture>
-                    <source>
-                    <img src="img/booking-img.jpg" alt="booking-img">
-                </picture>
+                <div class="yellow-square"></div> 
+                <picture><source srcset="img/booking-img.webp" type="image/webp"><img src="img/booking-img.jpg" alt="booking-img"></picture>
             </div>
         </div>
         <div class="subtext">Mon - Fri: <span>8PM - 10PM</span>, Sat - Sun: <span>8PM - 3AM</span>, Phone: <span>+40 729 131 637/+40 726 458 782</span></div>
@@ -166,10 +165,7 @@
                         <div class="specialtes__item">
                             <div class="image-wrapper image-wrapper_left">
                                 <div class="yellow-square yellow-square_left"></div>
-                                <picture>
-                                    <source>
-                                    <img src="img/specialties-img.jpg" alt="specialtes-img">
-                                </picture>
+                                <picture><source srcset="img/specialties-img.webp" type="image/webp"><img src="img/specialties-img.jpg" alt="specialtes-img"></picture>
                             </div>
                             <div class="text-wrapper text-wrapper_right white-text">
                                 <h2 class="title">chocolate pancakes</h2>
@@ -195,10 +191,7 @@
                             </div>
                             <div class="image-wrapper">
                                 <div class="yellow-square"></div>
-                                <picture>
-                                    <source>
-                                    <img src="img/specialties-img.jpg" alt="specialtes-img">
-                                </picture>
+                                <picture><source srcset="img/specialties-img.webp" type="image/webp"><img src="img/specialties-img.jpg" alt="specialtes-img"></picture>
                             </div>
                         </div>
                     </div>
@@ -206,10 +199,7 @@
                         <div class="specialtes__item">
                             <div class="image-wrapper image-wrapper_left">
                                 <div class="yellow-square yellow-square_left"></div>
-                                <picture>
-                                    <source>
-                                    <img src="img/specialties-img.jpg" alt="specialtes-img">
-                                </picture>
+                                <picture><source srcset="img/specialties-img.webp" type="image/webp"><img src="img/specialties-img.jpg" alt="specialtes-img"></picture>
                             </div>
                             <div class="text-wrapper text-wrapper_right white-text">
                                 <h2 class="title">chocolate pancakes</h2>
@@ -231,7 +221,7 @@
         <div class="container">
             <h2 class="title">DELICIOUS MENU</h2>
             <div class="divider"></div>
-            <p class="text text_mt14"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis <br>at velit maximus, molestie est a, tempor magna.</span></p>
+            <p class="text text_mt14"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at velit maximus, molestie est a, tempor magna.</span></p>
             <ul class="tabs">
                 <li class="tab tab_active">SOUPE</li>
                 <li class="tab">PIZZA</li>
@@ -796,61 +786,42 @@
     </section>
     <section class="private" id='events'>
         <div class="subtitle subtitle_top white-text">private events</div>
-        <div class="container container_flex container_flex-space-between">
+        <div class="container container_flex">
             <div class="image-wrapper image-wrapper_left">
                 <div class="yellow-square yellow-square_left"></div>
-                <picture class='pic'>
-                    <source>
-                    <img src="img/private-img1.jpg" alt="team-img">
-                </picture>
+                <picture class="pic"><source srcset="img/private-img1.webp" type="image/webp"><img src="img/private-img1.jpg" alt="team-img"></picture>
                 <div class="private__title white-text">weddings</div>
             </div>
             <div class="image-wrapper">
                 <div class="yellow-square"></div>
-                <picture class='pic pic2'>
-                    <source>
-                    <img src="img/private-img2.jpg" alt="team-img">
-                </picture>
+                <picture class="pic pic2"><source srcset="img/private-img2.webp" type="image/webp"><img src="img/private-img2.jpg" alt="team-img"></picture>
                 <div class="private__title private__title_right white-text">corporate parties</div>
             </div>
         </div>
         <div class="subtext">For private events please call: +40 729 131 637/+40 726 458 782 or use the contact form.</div>
     </section>
     <section class="gallery" id='gallery'>
-        <picture>
-            <source>
-            <img src="img/gallery/gallerty2.jpg" alt="1">
-        </picture>
-        <picture>
-            <source>
-            <img src="img/gallery/gallery3.jpg" alt="1">
-        </picture>
-        <picture>
-            <source>
-            <img src="img/gallery/gallery4.jpg" alt="1">
-        </picture>
-        <picture>
-            <source>
-            <img src="img/gallery/gallery1.jpg" alt="1">
-        </picture>
-        <picture>
-            <source>
-            <img src="img/gallery/gallerty2.jpg" alt="1">
-        </picture>
-        <picture>
-            <source>
-            <img src="img/gallery/gallery3.jpg" alt="1">
-        </picture>
-        <picture>
-            <source>
-            <img src="img/gallery/gallery4.jpg" alt="1">
-        </picture>
+        
+        <picture><source srcset="img/gallery/gallery2.webp" type="image/webp"><img src="img/gallery/gallery2.jpg" alt="1"></picture>
+        
+        <picture><source srcset="img/gallery/gallery3.webp" type="image/webp"><img src="img/gallery/gallery3.jpg" alt="1"></picture>
+        
+        <picture><source srcset="img/gallery/gallery4.webp" type="image/webp"><img src="img/gallery/gallery4.jpg" alt="1"></picture>
+        
+        <picture><source srcset="img/gallery/gallery1.webp" type="image/webp"><img src="img/gallery/gallery1.jpg" alt="1"></picture>
+        
+        <picture><source srcset="img/gallery/gallery2.webp" type="image/webp"><img src="img/gallery/gallery2.jpg" alt="1"></picture>
+        
+        <picture><source srcset="img/gallery/gallery3.webp" type="image/webp"><img src="img/gallery/gallery3.jpg" alt="1"></picture>
+        
+        <picture><source srcset="img/gallery/gallery4.webp" type="image/webp"><img src="img/gallery/gallery4.jpg" alt="1"></picture>
+        
     </section>
     <section class="contact" id='contact'>
         <div class="container">
             <h2 class="title">contact</h2>
             <div class="divider"></div>
-            <p class="text text_mt14"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis <br>   at velit maximus, molestie est a, tempor magna.</span></p>
+            <p class="text text_mt14"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at velit maximus, molestie est a, tempor magna.</span></p>
             <form class="form form_contact" action="">
                 <input type="text" class="form-input" name="name" placeholder="Name">
                 <input type="email" class="form-input" na   me="email" placeholder="Email">

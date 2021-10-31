@@ -6,7 +6,8 @@
     animation: slideIn 0.3s;
     &__content {
         img {
-            height: 800px;
+            max-height: 80vh;
+            max-width: 80vw;
         }
     }
     &__close {

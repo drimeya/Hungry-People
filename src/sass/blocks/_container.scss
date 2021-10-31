@@ -3,8 +3,6 @@
     margin: 0 auto;
     &_flex {
         display: flex;
-        &-space-between {
-            justify-content: space-between;
-        }
+        justify-content: space-between;
     }
 }

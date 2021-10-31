@@ -1,0 +1,23 @@
+.hamburger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    cursor: pointer;
+    div {
+        height: 3px;
+        width: 30px;
+        border-radius: 1px;
+        background: #fff;
+        margin-bottom: 10px;
+        transition: 0.2s all;
+    }
+    &:hover {
+        div {
+            transform: rotate(45deg) translateX(10px);
+            &:last-child {
+                transform: rotate(-45deg)translateX(10px);
+            }
+        }
+    }
+}

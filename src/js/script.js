@@ -8,12 +8,66 @@ document.addEventListener('DOMContentLoaded', function () {
         const id = link.getAttribute('href');
         document.querySelector(`${id}`).scrollIntoView({
           behavior: 'smooth',
-          block: 'center'
+          block: 'start'
         });
+
       });
     });
   }
   scroll();
+
+  function scrollUp(selector, height) {
+    const up = document.querySelector(selector);
+
+    document.addEventListener('scroll', () => {
+      if (document.documentElement.scrollTop > height) {
+        up.style.display = 'block';
+      } else {
+        up.style.display = 'none';
+      }
+    });
+  }
+  scrollUp('.down_up', 1000);
+
+  function hamburger() {
+    const hamburger = document.querySelector('.hamburger'),
+          nav = document.querySelector('.nav'),
+          ul = nav.querySelector('ul');
+          navItems = nav.querySelectorAll('.nav__item');
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('nav_active');
+    });
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        nav.classList.remove('nav_active');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target != ul && e.target != hamburger) {
+        nav.classList.remove('nav_active');
+      }
+    });
+  }
+  hamburger();
+
+  function showSocial() {
+    const trigger = document.querySelector('.social__arrow'),
+          social = document.querySelector('.social');
+
+    trigger.addEventListener('click', () => {
+      social.classList.toggle('social_active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target != social && e.target != trigger) {
+        social.classList.remove('social_active');
+      }
+    });
+  }
+  showSocial();
 
   function Tabs() {
     const tabParent = document.querySelector('.tabs'),
@@ -155,9 +209,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
           if (i >= 4) {
             i = i - 4;
-            modalContent.innerHTML = `<img src="img/gallery/carousel/gallery-big-${i + 1}.jpg" alt="${i + 1}">`;
+            modalContent.innerHTML = `<picture><source srcset="img/gallery/carousel/gallery-big-${i + 1}.webp" type="image/webp"><img src="img/gallery/carousel/gallery-big-${i + 1}.jpg" alt="${i + 1}"></picture>`;
           } else {
-            modalContent.innerHTML = `<img src="img/gallery/carousel/gallery-big-${i + 1}.jpg" alt="${i + 1}">`;
+            modalContent.innerHTML = `<picture><source srcset="img/gallery/carousel/gallery-big-${i + 1}.webp" type="image/webp"><img src="img/gallery/carousel/gallery-big-${i + 1}.jpg" alt="${i + 1}"></picture>`;
           }
 
           document.body.style.height = '100nh';

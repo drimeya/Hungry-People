@@ -6,8 +6,8 @@
     &__tab {
         display: none;  
         grid-template-columns: repeat(auto-fit, 360px);
-        justify-content: space-between;
-        gap: 30px 0;
+        justify-content: center;
+        gap: 30px 50px;
         &_active {
             display: grid;
             animation: slideIn 0.9s;
