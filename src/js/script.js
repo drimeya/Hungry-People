@@ -1,3 +1,4 @@
+'use strict';
 document.addEventListener('DOMContentLoaded', function () {
   function scroll() {
     const links = document.querySelectorAll('a[href*="#"]');
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function hamburger() {
     const hamburger = document.querySelector('.hamburger'),
           nav = document.querySelector('.nav'),
-          ul = nav.querySelector('ul');
+          ul = nav.querySelector('ul'),
           navItems = nav.querySelectorAll('.nav__item');
 
     hamburger.addEventListener('click', () => {
@@ -240,30 +241,61 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   gallery();
 
-  function modalForm() {
-    const btn = document.querySelectorAll('.button_form'),
-          overlay = document.querySelector('.overlay'),
-          modal = document.querySelector('.modal');
+  function sentForm() {
+    const forms = document.querySelectorAll('form'),
+        overlay = document.querySelector('.overlay'),
+        modal = document.querySelector('.modal'),
+        content = modal.querySelector('.modal__content'),
+        messages = {
+          success: 'Thank you! We will contact you during the day',
+          loading: 'Loading...',
+          error: 'Something went wrong'
+        };
 
-    btn.forEach(item => {
-      item.addEventListener('click', (e) => {
+    function createModal() {
+      overlay.classList.add('active');
+      modal.classList.add('modal_form');
+    }
+
+    function modalTimeOut() {
+      setTimeout(() => {
+        overlay.classList.add('overlay_slideOut');
+      }, 3000);
+      setTimeout(() => {
+        overlay.classList.remove('active');
+        overlay.classList.remove('overlay_slideOut');
+        modal.classList.remove('modal_form');
+        content.innerHTML = '';
+      }, 3280);
+    }
+    forms.forEach( form => {
+      form.addEventListener('submit', e => {
         e.preventDefault();
-        
-        overlay.classList.add('active');
-        modal.classList.add('modal_form');
-        setTimeout(() => {
-          overlay.classList.add('overlay_slideOut');
-        }, 3000);
-        setTimeout(() => {
-          overlay.classList.remove('active');
-          overlay.classList.remove('overlay_slideOut');
-          modal.classList.remove('modal_form');
-        }, 3280);
+
+        const request = new XMLHttpRequest();
+        request.open('POST', 'server.php');
+
+        const formData = new FormData(form);
+
+        request.send(formData);
+
+        createModal();
+        content.innerHTML = messages.loading;
+
+        request.addEventListener('load', () => {
+          if (request.status === 200) {
+            content.innerHTML = messages.success;
+            form.reset();
+            modalTimeOut();
+          } else {
+            content.innerHTML = messages.error;
+            modalTimeOut();
+          }
+        });
       });
     });
-
-    
   }
-  modalForm();
+  sentForm();
 
+  
 });

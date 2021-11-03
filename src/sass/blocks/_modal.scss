@@ -31,14 +31,11 @@
         top: 30%;
         width: 500px;
         background: #fff;
-        &::before {
-            content: 'Thank you! Our manager will contact you during the day';
-            display: block;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 18px;
-            line-height: 28px;
-            padding: 50px;
-            text-align: center;
-        }
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+        line-height: 28px;
+        padding: 50px;
+        text-align: center;
     }
 }

@@ -1,3 +1,4 @@
+'use strict';
 document.addEventListener('DOMContentLoaded', function () {
   function scroll() {
     const links = document.querySelectorAll('a[href*="#"]');
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function hamburger() {
     const hamburger = document.querySelector('.hamburger'),
           nav = document.querySelector('.nav'),
-          ul = nav.querySelector('ul');
+          ul = nav.querySelector('ul'),
           navItems = nav.querySelectorAll('.nav__item');
 
     hamburger.addEventListener('click', () => {
@@ -243,7 +244,8 @@ document.addEventListener('DOMContentLoaded', function () {
   function modalForm() {
     const btn = document.querySelectorAll('.button_form'),
           overlay = document.querySelector('.overlay'),
-          modal = document.querySelector('.modal');
+          modal = document.querySelector('.modal'),
+          content = modal.querySelector('.modal__content');
 
     btn.forEach(item => {
       item.addEventListener('click', (e) => {
@@ -251,6 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         overlay.classList.add('active');
         modal.classList.add('modal_form');
+        content.innerHTML = `Thank you! We will contact you during the day`;
         setTimeout(() => {
           overlay.classList.add('overlay_slideOut');
         }, 3000);
@@ -258,12 +261,12 @@ document.addEventListener('DOMContentLoaded', function () {
           overlay.classList.remove('active');
           overlay.classList.remove('overlay_slideOut');
           modal.classList.remove('modal_form');
+          content.innerHTML = '';
         }, 3280);
       });
     });
-
-    
   }
   modalForm();
 
+  
 });
