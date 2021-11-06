@@ -1,4 +1,5 @@
 'use strict';
+
 document.addEventListener('DOMContentLoaded', function () {
   function scroll() {
     const links = document.querySelectorAll('a[href*="#"]');
@@ -70,31 +71,58 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   showSocial();
 
-  function Tabs() {
-    const tabParent = document.querySelector('.tabs'),
-          tab = document.querySelectorAll('.tab'),
-          tabContent = document.querySelectorAll('.menu__tab');
+  
 
-    function changeTabs(i) {
-      tabContent.forEach(item => {
-        item.classList.remove('menu__tab_active');
-        tabContent[i].classList.add('menu__tab_active');
-      });
-    }
+ 
+  function menu() {
+    fetch('menu/menu.json', {
+      method: "GET",
+      headers: {
+        'Content-type': 'application/json'
+      }
+    })
+    .then(data => data.text())
+    .then(data => JSON.parse(data))
+    .then(data => {
+      const tabParent = document.querySelector('.tabs'),
+            tab = document.querySelectorAll('.tab'),
+            tabContent = document.querySelector ('.menu__tab');
+      
+      function createMenuItems(key) {
+        let currentTab = data[key];
 
-    tabParent.addEventListener('click', (event) => {
-      if (!event.target.classList.contains('.tab')) {
-        tab.forEach((item, i) => {
-          item.classList.remove('tab_active');
-          if (event.target == item) {
-            event.target.classList.add('tab_active');
-            changeTabs(i);
-          }
+        currentTab.forEach (item => {
+          const menuItem = document.createElement('div');
+          menuItem.classList.add('menu__item');
+
+          menuItem.innerHTML = `
+            <h3 class="menu__item-name">${item.name}</h3>
+            <p class="menu__item-descr">${item.descr}</p>
+            <div class="menu__item-price">${item.price}</div>
+          `;
+          tabContent.append(menuItem);
         });
       }
+      createMenuItems('soupe');
+      
+      tabParent.addEventListener('click', (event) => {
+        if (!event.target.classList.contains('.tab')) {
+          tab.forEach(item => {
+            item.classList.remove('tab_active');
+          });
+          event.target.classList.add('tab_active');
+
+          tabContent.innerHTML = '';
+          for (let key in data) {
+            if (key == event.target.innerHTML) {
+              createMenuItems(key);
+            }
+          }
+        }
+      });
     });
   }
-  Tabs();
+  menu();
 
   function slider() {
     const sliderItems = document.querySelectorAll('.slider__item'),
@@ -241,32 +269,68 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   gallery();
 
-  function modalForm() {
-    const btn = document.querySelectorAll('.button_form'),
-          overlay = document.querySelector('.overlay'),
-          modal = document.querySelector('.modal'),
-          content = modal.querySelector('.modal__content');
+  function sentForm() {
+    const forms = document.querySelectorAll('form'),
+        overlay = document.querySelector('.overlay'),
+        modal = document.querySelector('.modal'),
+        content = modal.querySelector('.modal__content'),
+        messages = {
+          success: 'Thank you! We will contact you during the day',
+          loading: 'Loading...',
+          error: 'Something went wrong'
+        };
 
-    btn.forEach(item => {
-      item.addEventListener('click', (e) => {
+    function createModal() {
+      overlay.classList.add('active');
+      modal.classList.add('modal_form');
+    }
+
+    function modalTimeOut() {
+      setTimeout(() => {
+        overlay.classList.add('overlay_slideOut');
+      }, 3000);
+      setTimeout(() => {
+        overlay.classList.remove('active');
+        overlay.classList.remove('overlay_slideOut');
+        modal.classList.remove('modal_form');
+        content.innerHTML = '';
+      }, 3280);
+    }
+    forms.forEach( form => {
+      form.addEventListener('submit', e => {
         e.preventDefault();
-        
-        overlay.classList.add('active');
-        modal.classList.add('modal_form');
-        content.innerHTML = `Thank you! We will contact you during the day`;
-        setTimeout(() => {
-          overlay.classList.add('overlay_slideOut');
-        }, 3000);
-        setTimeout(() => {
-          overlay.classList.remove('active');
-          overlay.classList.remove('overlay_slideOut');
-          modal.classList.remove('modal_form');
-          content.innerHTML = '';
-        }, 3280);
+        const formData = new FormData(form);
+
+        let  obj = {};
+        formData.forEach( (value, key) => {
+          obj[key] = value;
+        });
+
+        fetch('server.php', {
+          method: "POST",
+          body: JSON.stringify(obj),
+          headers: {
+            'Content-type': 'application/json'
+          }
+        })
+        .then(data => data.text())
+        .then(data => {
+          console.log(data);
+          createModal();
+          content.innerHTML = messages.loading;
+        })
+        .then(() => {
+          content.innerHTML = messages.success;
+        })
+        .catch( () => {
+          content.innerHTML = messages.error;
+        })
+        .finally(() => {
+          form.reset();
+          modalTimeOut();
+        });
       });
     });
   }
-  modalForm();
-
-  
+  sentForm();
 });

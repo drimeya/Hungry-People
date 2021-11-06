@@ -4,18 +4,16 @@
         margin-top: 50px;
     }
     &__tab {
-        display: none;  
+        display: grid;  
         grid-template-columns: repeat(auto-fit, 360px);
         justify-content: center;
         gap: 30px 50px;
-        &_active {
-            display: grid;
-            animation: slideIn 0.9s;
-        }
+        animation: slideIn 0.9s;
     }
     &__item {
         display: grid;
         grid-template-columns: 270px 1fr;
+        animation: slideIn 0.9s;
         &-name {
             font-family: Banny;
             font-size: 18px;
