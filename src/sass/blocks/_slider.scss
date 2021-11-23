@@ -2,11 +2,7 @@
     position: relative;
     animation: slideIn 0.7s ease-in-out;
     &__item {
-        display: none;
-        &_active {
-            display: block;
-            animation: slideIn 0.7s ease-in-out;
-        }
+        animation: slideIn 0.7s ease-in-out;
     }
     &__dot-wrapper {
         position: absolute;

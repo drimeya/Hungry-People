@@ -137,8 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
         dotsCreate = document.createElement('div');
     let dots;
 
-    sliderWrap.innerHTML = '';
-
     getResource('database/slides.json')
     .then(data => {
       const slides = data.slides;
@@ -163,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
       function createSlide(i) {
         if (i % 2 === 0 || i === 0) {
           sliderWrap.innerHTML = `
-            <div class="slider__item slider__item_active">
+            <div class="slider__item">
               <div class="specialtes__item">
                   <div class="image-wrapper image-wrapper_left">
                       <div class="yellow-square yellow-square_left"></div>
@@ -183,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
           `;
         } else {
           sliderWrap.innerHTML = `
-          <div class="slider__item slider__item_active">
+          <div class="slider__item">
             <div class="specialtes__item">
               <div class="text-wrapper white-text">
                 <h2 class="title">${data[i].name}</h2>
