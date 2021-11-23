@@ -71,18 +71,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   showSocial();
 
-  
-
- 
   function menu() {
-    fetch('menu/menu.json', {
+    fetch('database/menu.json', {
       method: "GET",
       headers: {
         'Content-type': 'application/json'
       }
     })
-    .then(data => data.text())
-    .then(data => JSON.parse(data))
+    .then(data => data.json())
     .then(data => {
       const tabParent = document.querySelector('.tabs'),
             tab = document.querySelectorAll('.tab'),
@@ -124,84 +120,137 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   menu();
 
+  async function getResource(url) {
+    let res = await fetch(url);
+
+    if (!res.ok) {
+        throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+    }
+
+    return await res.json();
+  }
+
+  //slider (на сервере)
+
   function slider() {
-    const sliderItems = document.querySelectorAll('.slider__item'),
-          sliderWrap = document.querySelector('.slider'),
-          dotsCreate = document.createElement('div');
+    const sliderWrap = document.querySelector('.slider'),
+        dotsCreate = document.createElement('div');
     let dots;
 
-    function createDots() {
-      dotsCreate.classList.add('slider__dot-wrapper');
+    sliderWrap.innerHTML = '';
 
-      sliderWrap.append(dotsCreate);
-      for (let i = 0; i < sliderItems.length; i++) {
-        let dot = document.createElement('div');
-        dotsCreate.append(dot);
-        dot.classList.add('slider__dot');
-        if (i === 0) {
-          dot.classList.add('slider__dot_active');
+    getResource('database/slides.json')
+    .then(data => {
+      const slides = data.slides;
+      return slides;
+    })
+    .then(data => {
+      function createDots() {
+        dotsCreate.classList.add('slider__dot-wrapper');
+    
+        sliderWrap.after(dotsCreate);
+        for (let i = 0; i < data.length; i++) {
+          let dot = document.createElement('div');
+          dotsCreate.append(dot);
+          dot.classList.add('slider__dot');
+          if (i === 0) {
+            dot.classList.add('slider__dot_active');
+          }
         }
       }
-    }
+      createDots();
 
-    function sliderSwitch(i) {
-      sliderItems.forEach(item => {
-        item.classList.remove('slider__item_active');
-      });
+      function createSlide(i) {
+        if (i % 2 === 0 || i === 0) {
+          sliderWrap.innerHTML = `
+            <div class="slider__item slider__item_active">
+              <div class="specialtes__item">
+                  <div class="image-wrapper image-wrapper_left">
+                      <div class="yellow-square yellow-square_left"></div>
+                      <picture><source srcset="${data[i].picture.slice(0, -3) + 'webp'}" type="image/webp"><img src="${data[i].picture}img/specialties-img.jpg" alt="specialtes-img"></picture>
+                  </div>
+                  <div class="text-wrapper text-wrapper_right white-text">
+                      <h2 class="title">${data[i].name}</h2>
+                      <div class="divider"></div>
+                      <p class="text text_mt14">
+                          <span>${data[i].boldDescr}</span>
+                          <br><br>
+                          ${data[i].descr}
+                      </p>
+                  </div>
+              </div>
+            </div>
+          `;
+        } else {
+          sliderWrap.innerHTML = `
+          <div class="slider__item slider__item_active">
+            <div class="specialtes__item">
+              <div class="text-wrapper white-text">
+                <h2 class="title">${data[i].name}</h2>
+                <div class="divider"></div>
+                <p class="text text_mt14">
+                    <span>${data[i].boldDescr}</span>
+                    <br><br>
+                    ${data[i].descr}
+                </p>
+              </div>
+              <div class="image-wrapper">
+                <div class="yellow-square"></div>
+                <picture><source srcset="${data[i].picture.slice(0, -3) + 'webp'}" type="image/webp"><img src="${data[i].picture}" alt="specialtes-img"></picture>
+            </div>
+            </div>
+          </div>
+          `;
+        } 
+      }
+      createSlide(0);
 
-      sliderItems[i].classList.add('slider__item_active');
-    }
-
-    function dotsSwitch(item) {
-      dots.forEach(x => {
-        x.classList.remove('slider__dot_active');
-      });
-
-      item.classList.add('slider__dot_active');
-    }
-
-    function switcher() {
-      dots = document.querySelectorAll('.slider__dot');
-
-      dots.forEach((item, i) => {
-        item.addEventListener('click', () => {
-          dotsSwitch(item);
-
-          sliderSwitch(i);
+      function dotsSwitch(item) {
+        dots.forEach(x => {
+          x.classList.remove('slider__dot_active');
         });
-      });
-    }
 
-    function sliderAutoplay() {
-      let i = 0;
+        item.classList.add('slider__dot_active');
+      }
 
-      let timer = setInterval(() => {
-        if (i === sliderItems.length) {
-          i = 0;
+      function switcher() {
+        dots = document.querySelectorAll('.slider__dot');
+
+        dots.forEach((item, i) => {
+          item.addEventListener('click', () => {
+            dotsSwitch(item);
+
+            createSlide(i);
+          });
+        });
+      }
+      switcher();
+
+      function sliderAutoplay() {
+        let i = 1;
+
+        function changeSlide() {
+          if (i === data.length) {
+            i = 0;
+          }
+          dotsSwitch(dots[i]);
+          createSlide(i);
+          i++;
         }
-        dotsSwitch(dots[i]);
-        sliderSwitch(i);
-        i++;
-      }, 5000);
 
-      dots.forEach(item => {
-        item.addEventListener('click', () => {
-          clearInterval(timer);
+        let timer = setInterval(changeSlide, 5000);
 
-          timer = setInterval(() => {
-            if (i === sliderItems.length) {
-              i = 0;
-            }
-            dotsSwitch(dots[i]);
-            sliderSwitch(i);
-            i++;
-          }, 5000);
+        dots.forEach(item => {
+          item.addEventListener('click', () => {
+            clearInterval(timer);
+
+            timer = setInterval(changeSlide, 5000);
+          });
         });
-      });
-    }
-    createDots();
-    switcher();
-    sliderAutoplay();
+      }
+
+      sliderAutoplay();
+    });
   }
   slider();
 
@@ -230,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
     }
-    //при клике будет появляться оверлей и окно с картинкой и стрелочками по краям, галерея зациклена
+    
     function showGallery() {
       galleryItems.forEach((item, i) => {
         item.addEventListener('click', () => {
@@ -333,4 +382,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   sentForm();
+
 });
+

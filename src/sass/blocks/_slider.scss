@@ -1,5 +1,6 @@
 .slider {
     position: relative;
+    animation: slideIn 0.7s ease-in-out;
     &__item {
         display: none;
         &_active {
@@ -9,7 +10,7 @@
     }
     &__dot-wrapper {
         position: absolute;
-        bottom: -50px;
+        bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
