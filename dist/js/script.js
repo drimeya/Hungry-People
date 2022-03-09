@@ -71,14 +71,19 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   showSocial();
 
+  async function getResource(url, parent) {
+    let res = await fetch(url);
+
+    if (!res.ok) {
+        document.querySelector(parent).innerHTML = `Something went wrong`;
+        document.querySelector(parent).classList.add('error');
+    }
+
+    return await res.json();
+  }
+
   function menu() {
-    fetch('database/menu.json', {
-      method: "GET",
-      headers: {
-        'Content-type': 'application/json'
-      }
-    })
-    .then(data => data.json())
+    getResource('database/menu.json', '.menu__content')
     .then(data => {
       const tabParent = document.querySelector('.tabs'),
             tab = document.querySelectorAll('.tab'),
@@ -120,16 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   menu();
 
-  async function getResource(url) {
-    let res = await fetch(url);
-
-    if (!res.ok) {
-        throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-    }
-
-    return await res.json();
-  }
-
   //slider (на сервере)
 
   function slider() {
@@ -137,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
         dotsCreate = document.createElement('div');
     let dots;
 
-    getResource('database/slides.json')
+    getResource('database/slides.json', '.slider')
     .then(data => {
       const slides = data.slides;
       return slides;
@@ -382,4 +377,3 @@ document.addEventListener('DOMContentLoaded', function () {
   sentForm();
 
 });
-
